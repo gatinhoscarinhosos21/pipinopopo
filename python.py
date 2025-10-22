@@ -1,34 +1,30 @@
-from flask import Flask, request, jsonify, render_template
+ from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Permitir requisições do frontend
 
 clientes = []
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+@app.route('/api/clientes', methods=['POST'])
+def cadastrar_cliente():
+    data = request.get_json()
 
-@app.route('/cadastro', methods=['POST'])
-def cadastro():
-    data = request.json
-    nome = data.get('nome')
+    name = data.get('name')
     email = data.get('email')
-    telefone = data.get('telefone')
+    phone = data.get('phone')
 
-    if not nome or not email or not telefone:
-        return jsonify({'error': 'Todos os campos são obrigatórios!'}), 400
+    if not name or not email or not phone:
+        return jsonify({'error': 'Todos os campos são obrigatórios.'}), 400
 
-    cliente = {
-        'nome': nome,
+    # Aqui poderia salvar num banco de dados, por simplicidade vai na lista
+    clientes.append({
+        'name': name,
         'email': email,
-        'telefone': telefone
-    }
-    clientes.append(cliente)
-    return jsonify({'message': 'Cliente cadastrado com sucesso!', 'cliente': cliente}), 200
+        'phone': phone
+    })
 
-@app.route('/clientes')
-def listar_clientes():
-    return jsonify(clientes)
+    return jsonify({'message': 'Cliente cadastrado com sucesso!'}), 201
 
 if __name__ == '__main__':
     app.run(debug=True)
