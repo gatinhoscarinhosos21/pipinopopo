@@ -1,121 +1,24 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Clientes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f7f7f7;
-            padding: 30px;
-        }
-        form {
-            background: white;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 20px;
-            border-radius: 6px;
-            box-shadow: 0 0 10px #ccc;
-        }
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-        input[type="text"], input[type="email"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 4px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px;
-            width: 100%;
-            background: #007BFF;
-            border: none;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-        .error {
-            color: red;
-            font-size: 0.9em;
-            margin-top: 4px;
-        }
-        .success {
-            color: green;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 15px;
-        }
-    </style>
-</head>
+    <link rel="stylesheet" href="style.css"> </head>
 <body>
+    <div class="container">
+        <h1>Cadastro de Clientes</h1>
+        <form action="/cadastrar" method="POST"> <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
 
-    <form id="clientForm">
-        <h2>Cadastro de Clientes</h2>
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required />
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone">
 
-        <label for="phone">Telefone:</label>
-        <input type="text" id="phone" name="phone" required />
-
-        <button type="submit">Cadastrar</button>
-        <div id="msg"></div>
-    </form>
-
-    <script>
-        const form = document.getElementById('clientForm');
-        const msg = document.getElementById('msg');
-
-        form.addEventListener('submit', async e => {
-            e.preventDefault();
-
-            msg.textContent = '';
-            const name = form.name.value.trim();
-            const email = form.email.value.trim();
-            const phone = form.phone.value.trim();
-
-            if (!name || !email || !phone) {
-                msg.textContent = "Por favor, preencha todos os campos.";
-                msg.className = "error";
-                return;
-            }
-
-            // Envia para backend (exemplo de Python Flask)
-            try {
-                const response = await fetch('/api/clientes', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, phone })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    msg.textContent = data.message;
-                    msg.className = "success";
-                    form.reset();
-                } else {
-                    msg.textContent = data.error || 'Erro ao cadastrar.';
-                    msg.className = "error";
-                }
-            } catch (error) {
-                msg.textContent = "Erro ao conectar ao servidor.";
-                msg.className = "error";
-            }
-        });
-    </script>
-
+            <button type="submit">Cadastrar Cliente</button>
+        </form>
+    </div>
 </body>
 </html>

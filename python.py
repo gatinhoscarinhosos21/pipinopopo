@@ -1,30 +1,40 @@
- from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask import Flask, render_template, request, redirect, url_for
 
-app = Flask(__name__)
-CORS(app)  # Permitir requisições do frontend
-
+# Lista simples para armazenar os clientes (em um projeto real, você usaria um banco de dados)
 clientes = []
 
-@app.route('/api/clientes', methods=['POST'])
-def cadastrar_cliente():
-    data = request.get_json()
+app = Flask(__name__)
 
-    name = data.get('name')
-    email = data.get('email')
-    phone = data.get('phone')
+# Rota para a página inicial (o formulário)
+@app.route('/')
+def index():
+    # Supondo que 'index.html' esteja em uma pasta chamada 'templates'
+    return render_template('index.html')
 
-    if not name or not email or not phone:
-        return jsonify({'error': 'Todos os campos são obrigatórios.'}), 400
+# Rota para receber os dados do formulário
+@app.route('/cadastrar', methods=['POST'])
+def cadastrar():
+    if request.method == 'POST':
+        # Obtém os dados do formulário
+        nome = request.form['nome']
+        email = request.form['email']
+        telefone = request.form.get('telefone', 'Não Informado') # Usa .get para campos opcionais
 
-    # Aqui poderia salvar num banco de dados, por simplicidade vai na lista
-    clientes.append({
-        'name': name,
-        'email': email,
-        'phone': phone
-    })
+        novo_cliente = {
+            'nome': nome,
+            'email': email,
+            'telefone': telefone
+        }
 
-    return jsonify({'message': 'Cliente cadastrado com sucesso!'}), 201
+        # Adiciona o cliente à lista (simulação de salvamento)
+        clientes.append(novo_cliente)
+
+        # Log no console do servidor para verificar
+        print(f"Cliente Cadastrado: {novo_cliente}")
+        
+        # Redireciona para uma página de sucesso ou lista
+        return f"<h1>Cliente {nome} cadastrado com sucesso!</h1><p><a href='/'>Voltar</a></p>"
 
 if __name__ == '__main__':
+    # Para rodar o servidor, você precisa criar uma pasta 'templates' e colocar o 'index.html' dentro dela.
     app.run(debug=True)
