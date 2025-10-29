@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #c896b2;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -53,5 +53,5 @@ form button {
 }
 
 form button:hover {
-    background-color: #4cae4c;
+    background-color: #6aaeb9;
 }
