@@ -1,6 +1,6 @@
  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fff7fb; /* rosa bem clarinho */
+    font-family: Arial, sans-serif;
+    background-color: #fff5f8; /* rosa clarinho */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,9 +9,9 @@
 }
 
 .container {
-    background-color: #ffe4f0; /* rosa pastel */
+    background-color: #ffd9e8; /* rosa pastel suave */
     padding: 30px;
-    border-radius: 15px; /* bordas mais arredondadas para fofura */
+    border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
@@ -19,28 +19,27 @@
 
 h1 {
     text-align: center;
-    color: #ff6f91; /* rosa mais forte para o título */
+    color: #000000;
     margin-bottom: 20px;
-    font-family: 'Comic Sans MS', cursive, sans-serif; /* estilo mais divertido */
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #ff91a4; /* rosa pastel para os labels */
+    color: #000000;
 }
 
 form input[type="text"],
 form input[type="email"],
 form input[type="tel"] {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ffcce0; /* borda suave */
-    border-radius: 10px; /* input arredondado */
+    border: 1px solid #ffcce0;
+    border-radius: 8px;
     box-sizing: border-box;
-    background-color: #fff0f5; /* leve tom rosa dentro do input */
+    background-color: #fff0f5;
     transition: all 0.3s ease;
 }
 
@@ -53,18 +52,19 @@ form input[type="tel"]:focus {
 }
 
 form button {
-    background-color: #ff91a4; /* rosa fofo */
+    display: block;      /* garante que o botão apareça */
+    background-color: #ff91a4;
     color: white;
-    padding: 12px;
+    padding: 10px;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+    margin-top: 5px;     /* adiciona um pequeno espaço acima do botão */
     transition: all 0.3s ease;
 }
 
 form button:hover {
-    background-color: #ffb6c1; /* rosa mais claro ao passar o mouse */
-    transform: translateY(-2px);
+    background-color: #ffb6c1;
 }
