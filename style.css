@@ -1,6 +1,6 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+ body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff7fb; /* rosa bem clarinho */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,49 +9,62 @@ body {
 }
 
 .container {
-    background-color: #c896b2;
+    background-color: #ffe4f0; /* rosa pastel */
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* bordas mais arredondadas para fofura */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #ff6f91; /* rosa mais forte para o título */
     margin-bottom: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* estilo mais divertido */
 }
 
 form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #555;
+    color: #ff91a4; /* rosa pastel para os labels */
 }
 
 form input[type="text"],
 form input[type="email"],
 form input[type="tel"] {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+    border: 1px solid #ffcce0; /* borda suave */
+    border-radius: 10px; /* input arredondado */
+    box-sizing: border-box;
+    background-color: #fff0f5; /* leve tom rosa dentro do input */
+    transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="tel"]:focus {
+    border-color: #ff91a4;
+    box-shadow: 0 0 5px #ff91a4;
+    outline: none;
 }
 
 form button {
-    background-color: #d883eb;
+    background-color: #ff91a4; /* rosa fofo */
     color: white;
-    padding: 10px 15px;
+    padding: 12px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
     font-size: 16px;
     width: 100%;
+    transition: all 0.3s ease;
 }
 
 form button:hover {
-    background-color: #6aaeb9;
+    background-color: #ffb6c1; /* rosa mais claro ao passar o mouse */
+    transform: translateY(-2px);
 }
