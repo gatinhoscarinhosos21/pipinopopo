@@ -28,6 +28,7 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
+mvn spring-boot:run
 
     public String getTelefone() {
         return telefone;
